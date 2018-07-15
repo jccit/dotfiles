@@ -10,4 +10,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	do
 		source $file
 	done
+else
+        for file in ~/.zshrc.d/linux/*.zshrc;
+        do
+                source $file
+        done
 fi
