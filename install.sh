@@ -2,8 +2,14 @@
 
 dir=`pwd`
 
+OS=$OSTYPE
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    OS=$( awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }' )
+fi
+
 # macOS cli deps
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OS" == "darwin"* ]]; then
     echo '-----------------------------'
     echo 'Installing macOS dependencies'
     echo '-----------------------------'
@@ -48,6 +54,19 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     echo '   Dependencies installed    '
     echo '-----------------------------'
     echo ''
+elif [[ "$OS" == "arch"* ]]; then
+    echo '-----------------------------'
+    echo ' Installing arch linux deps'
+    echo '-----------------------------'
+    echo ''
+
+    sudo pacman -S nodejs yarn zsh
+
+    echo ''
+    echo '-----------------------------'
+    echo '   Dependencies installed    '
+    echo '-----------------------------'
+    echo ''
 fi
 
 #
@@ -66,7 +85,7 @@ if [[ ! -d $HOME/.zshrc.d ]]; then
 fi
 
 # Install macOS apps
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OS" == "darwin"* ]]; then
     echo ''
     echo '-----------------------------'
     echo '    Installing macOS apps    '
