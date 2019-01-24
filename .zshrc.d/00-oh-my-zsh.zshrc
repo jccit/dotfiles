@@ -5,7 +5,8 @@ export ZSH=${HOME}/.oh-my-zsh
 ZSH_THEME="gallois"
 
 # Command auto-correction.
-ENABLE_CORRECTION="true"
+# Let thefuck handle this for now
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
