@@ -49,6 +49,13 @@ if [[ "$OS" == "darwin"* ]]; then
         brew install yarn
     fi
 
+    if command -v thefuck >/dev/null 2>&1; then
+        echo 'thef*** already installed'
+    else
+        echo 'Installing thef***...'
+        brew install thefuck
+    fi
+
     echo ''
     echo '-----------------------------'
     echo '   Dependencies installed    '
@@ -60,7 +67,7 @@ elif [[ "$OS" == "arch"* ]]; then
     echo '-----------------------------'
     echo ''
 
-    sudo pacman -S nodejs yarn zsh
+    sudo pacman -S nodejs yarn zsh thefuck
 
     echo ''
     echo '-----------------------------'
