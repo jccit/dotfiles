@@ -61,6 +61,9 @@ if [[ "$OS" == "darwin"* ]]; then
     echo '   Dependencies installed    '
     echo '-----------------------------'
     echo ''
+
+    # Apply macOS settings
+    source mac-tweaks.sh
 elif [[ "$OS" == "arch"* ]]; then
     echo '-----------------------------'
     echo ' Installing arch linux deps'
