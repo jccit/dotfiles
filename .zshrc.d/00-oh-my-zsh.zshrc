@@ -14,6 +14,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   npm
+  yarn
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh

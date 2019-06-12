@@ -91,6 +91,12 @@ if [[ ! -d $HOME/.zshrc.d ]]; then
     cp -R ${dir}/.zshrc.d ${HOME}/.zshrc.d
 fi
 
+
+if [[ ! -d $HOME/.nvm ]]; then
+	echo 'nvm is not installed. Downloading...'
+	git clone https://github.com/nvm-sh/nvm.git ~/.nvm
+fi
+
 # Install macOS apps
 if [[ "$OS" == "darwin"* ]]; then
     echo ''
