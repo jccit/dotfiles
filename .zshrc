@@ -1,5 +1,8 @@
 # Edit files inside .zshrc.d, it's much neater
 
+dotfile=${(%):-%x}
+dotfiles_dir="${dotfile%/*}"
+
 for file in ~/.zshrc.d/*.zshrc;
 do
 	source $file

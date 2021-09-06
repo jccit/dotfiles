@@ -88,10 +88,15 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
+if [[ ! -d $HOME/.oh-my-zsh/plugins/zsh-autosuggestions ]]; then
+    echo 'Installing zsh-autosuggestions'
+    git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/plugins/zsh-autosuggestions
+fi
+
 if [[ ! -d $HOME/.zshrc.d ]]; then
     echo 'No zshrc.d folder. Replacing config with base'
     cp ${dir}/.zshrc ${HOME}/.zshrc
-    cp -R ${dir}/.zshrc.d ${HOME}/.zshrc.d
+    ln -s ${dir}/.zshrc.d ${HOME}/.zshrc.d
 fi
 
 
