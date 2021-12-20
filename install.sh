@@ -70,13 +70,33 @@ elif [[ "$OS" == "arch"* ]]; then
     echo '-----------------------------'
     echo ''
 
-    sudo pacman -S nodejs yarn zsh thefuck
+    sudo pacman -S nodejs yarn zsh thefuck bottom glances duf bat lsd tmux libvirt qemu swtpm spice-protocol gnome-themes-extra gtk-engine-murrine
 
     echo ''
     echo '-----------------------------'
     echo '   Dependencies installed    '
     echo '-----------------------------'
     echo ''
+
+    echo ''
+    echo '-----------------------------'
+    echo '   Installing gnome theme    '
+    echo '-----------------------------'
+    echo ''
+
+    mkdir ~/pkg
+    git clone https://github.com/vinceliuice/Orchis-theme.git ~/pkg/Orchis
+    chmod +x ~/pkg/Orchis/install.sh
+    ~/pkg/Orchis/install.sh
+
+    git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/pkg/fluent
+    chmod +x ~/pkg/fluent/install.sh
+    ~/pkg/fluent/install.sh
+
+    git clone https://github.com/refi64/stylepak.git ~/pkg/stylepak
+    chmod +x ~/pkg/stylepak/stylepak
+    ~/pkg/stylepak/stylepak install-user Orchis
+    ~/pkg/stylepak/stylepak install-user Orchis-dark
 fi
 
 #

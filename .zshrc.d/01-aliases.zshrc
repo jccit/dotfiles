@@ -9,3 +9,5 @@ alias zshrc="vim ~/.zshrc"
 alias cl="clear"
 
 alias kube="kubectl"
+
+alias ls="lsd"
