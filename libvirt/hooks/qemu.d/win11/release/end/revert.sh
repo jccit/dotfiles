@@ -1,0 +1,32 @@
+#!/bin/bash
+set -x
+
+# Restore system cores
+# Force system away from vm cores
+systemctl set-property --runtime -- user.slice AllowedCPUs=0-23
+systemctl set-property --runtime -- system.slice AllowedCPUs=0-23
+systemctl set-property --runtime -- init.scope AllowedCPUs=0-23
+
+## Load the config file
+source "/etc/libvirt/hooks/kvm.conf"
+
+# Unload VFIO-PCI Kernel Driver
+modprobe -r vfio_pci
+modprobe -r vfio_iommu_type1
+modprobe -r vfio
+
+# Re-Bind GPU to AMD Driver
+virsh nodedev-reattach $VIRSH_GPU_VIDEO
+virsh nodedev-reattach $VIRSH_GPU_AUDIO
+
+# Rebind VT consoles
+echo 1 > /sys/class/vtconsole/vtcon0/bind
+echo 0 > /sys/class/vtconsole/vtcon1/bind
+
+# Re-Bind EFI-Framebuffer
+# echo "efi-framebuffer.0" > /sys/bus/platform/drivers/efi-framebuffer/bind
+
+#Loads amd drivers 
+modprobe amdgpu
+# Restart Display Manager
+systemctl start display-manager

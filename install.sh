@@ -72,6 +72,8 @@ elif [[ "$OS" == "arch"* ]]; then
 
     sudo pacman -S nodejs yarn zsh thefuck bottom glances duf bat lsd tmux libvirt qemu swtpm spice-protocol gnome-themes-extra gtk-engine-murrine
 
+    sudo cp -r ${dir}/libvirt/hooks /etc/libvirt/hooks
+
     echo ''
     echo '-----------------------------'
     echo '   Dependencies installed    '
@@ -97,6 +99,7 @@ elif [[ "$OS" == "arch"* ]]; then
     chmod +x ~/pkg/stylepak/stylepak
     ~/pkg/stylepak/stylepak install-user Orchis
     ~/pkg/stylepak/stylepak install-user Orchis-dark
+    
 fi
 
 #
