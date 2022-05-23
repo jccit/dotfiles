@@ -35,27 +35,6 @@ if [[ "$OS" == "darwin"* ]]; then
         brew install git zsh
     fi
 
-    if command -v node >/dev/null 2>&1; then
-        echo 'Node already installed'
-    else
-        echo 'Installing Node...'
-        brew install node
-    fi
-
-    if command -v yarn >/dev/null 2>&1; then
-        echo 'Yarn already installed'
-    else
-        echo 'Installing Yarn...'
-        brew install yarn
-    fi
-
-    if command -v thefuck >/dev/null 2>&1; then
-        echo 'thef*** already installed'
-    else
-        echo 'Installing thef***...'
-        brew install thefuck
-    fi
-
     echo ''
     echo '-----------------------------'
     echo '   Dependencies installed    '
@@ -70,7 +49,7 @@ elif [[ "$OS" == "arch"* ]]; then
     echo '-----------------------------'
     echo ''
 
-    sudo pacman -S nodejs yarn zsh thefuck bottom glances duf bat lsd tmux libvirt qemu swtpm spice-protocol gnome-themes-extra gtk-engine-murrine
+    sudo pacman -S nodejs yarn zsh bottom glances duf bat lsd tmux libvirt qemu swtpm spice-protocol gnome-themes-extra gtk-engine-murrine
 
     sudo cp -r ${dir}/libvirt/hooks /etc/libvirt/hooks
 
@@ -108,7 +87,7 @@ fi
 
 if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	echo 'oh-my-zsh is not installed. Downloading...'
-	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
 if [[ ! -d $HOME/.oh-my-zsh/plugins/zsh-autosuggestions ]]; then
@@ -125,8 +104,12 @@ fi
 
 if [[ ! -d $HOME/.nvm ]]; then
 	echo 'nvm is not installed. Downloading...'
-	git clone https://github.com/nvm-sh/nvm.git ~/.nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fi
+
+# Set github config
+git config --global user.name "Josef Citrine"
+git config --global user.email "josef@citrine.dev"
 
 # Install macOS apps
 if [[ "$OS" == "darwin"* ]]; then
@@ -144,10 +127,6 @@ if [[ "$OS" == "darwin"* ]]; then
 
     if [[ ! -d /Applications/Firefox.app ]]; then
         apps+='firefox '
-    fi
-
-    if [[ ! -d /Applications/1Password\ 7.app ]]; then
-        apps+='1password '
     fi
 
     if [[ ! -d /Applications/Alfred\ 3.app ]]; then
