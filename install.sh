@@ -90,6 +90,11 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
+if [[ ! -d $HOME/.oh-my-zsh/custom/themes/powerlevel10k ]]; then
+    echo 'Installing powerlevel10k'
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+fi
+
 if [[ ! -d $HOME/.oh-my-zsh/plugins/zsh-autosuggestions ]]; then
     echo 'Installing zsh-autosuggestions'
     git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/plugins/zsh-autosuggestions

@@ -2,7 +2,7 @@
 export ZSH=${HOME}/.oh-my-zsh
 
 # https://github.com/robbyrussell/oh-my-zsh/wiki/themes
-ZSH_THEME="gallois"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Command auto-correction.
 # Let thefuck handle this for now
