@@ -90,9 +90,11 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-if [[ ! -d $HOME/.oh-my-zsh/custom/themes/powerlevel10k ]]; then
-    echo 'Installing powerlevel10k'
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+if [[ ! -d $HOME/.starship/starship ]]; then
+    echo 'Installing starship'
+    mkdir -p $HOME/.starship
+    curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir $HOME/.starship -f
+    ln -s ${dir}/starship.toml ${HOME}/.starship/starship.toml
 fi
 
 if [[ ! -d $HOME/.oh-my-zsh/plugins/zsh-autosuggestions ]]; then
