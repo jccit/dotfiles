@@ -19,7 +19,7 @@ if [[ "$OS" == "darwin"* ]]; then
         echo 'Homebrew already installed'
     else
         echo 'Installing homebrew...'
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
     if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
@@ -115,7 +115,7 @@ if [[ ! -d $HOME/.nvm ]]; then
 fi
 
 # Set github config
-git config --global user.name "Josef Citrine"
+git config --global user.name "Joe Citrine"
 git config --global user.email "josef@citrine.dev"
 
 # Install macOS apps
