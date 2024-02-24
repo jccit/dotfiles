@@ -136,13 +136,5 @@ if [[ "$OS" == "darwin"* ]]; then
         apps+='firefox '
     fi
 
-    if [[ ! -d /Applications/Alfred\ 3.app ]]; then
-        apps+='alfred '
-    fi
-
-    if [[ ! -d /Applications/Spotify.app ]]; then
-        apps+='spotify '
-    fi
-
     echo 'Apps to install:' $apps
 fi
