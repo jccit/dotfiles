@@ -11,3 +11,5 @@ format = '[$symbol($profile )(\($region\) )]($style)'
 style = 'bold yellow'
 symbol = ' '
 
+[battery]
+disabled = true
