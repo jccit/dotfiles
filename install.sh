@@ -19,7 +19,7 @@ if [[ "$OS" == "darwin"* ]]; then
         echo 'Homebrew already installed'
     else
         echo 'Installing homebrew...'
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
     if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
@@ -51,34 +51,11 @@ elif [[ "$OS" == "arch"* ]]; then
 
     sudo pacman -S nodejs yarn zsh bottom glances duf bat lsd tmux libvirt qemu swtpm spice-protocol gnome-themes-extra gtk-engine-murrine
 
-    sudo cp -r ${dir}/libvirt/hooks /etc/libvirt/hooks
-
     echo ''
     echo '-----------------------------'
     echo '   Dependencies installed    '
     echo '-----------------------------'
     echo ''
-
-    echo ''
-    echo '-----------------------------'
-    echo '   Installing gnome theme    '
-    echo '-----------------------------'
-    echo ''
-
-    mkdir ~/pkg
-    git clone https://github.com/vinceliuice/Orchis-theme.git ~/pkg/Orchis
-    chmod +x ~/pkg/Orchis/install.sh
-    ~/pkg/Orchis/install.sh
-
-    git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/pkg/fluent
-    chmod +x ~/pkg/fluent/install.sh
-    ~/pkg/fluent/install.sh
-
-    git clone https://github.com/refi64/stylepak.git ~/pkg/stylepak
-    chmod +x ~/pkg/stylepak/stylepak
-    ~/pkg/stylepak/stylepak install-user Orchis
-    ~/pkg/stylepak/stylepak install-user Orchis-dark
-    
 fi
 
 #
@@ -86,11 +63,11 @@ fi
 #
 
 if [[ ! -d $HOME/.oh-my-zsh ]]; then
-	echo 'oh-my-zsh is not installed. Downloading...'
-	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    echo 'oh-my-zsh is not installed. Downloading...'
+    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-if [[ ! -d $HOME/.starship/starship ]]; then
+if [[ ! -d $HOME/.starship ]]; then
     echo 'Installing starship'
     mkdir -p $HOME/.starship
     curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir $HOME/.starship -f
@@ -110,7 +87,7 @@ fi
 
 
 if [[ ! -d $HOME/.nvm ]]; then
-	echo 'nvm is not installed. Downloading...'
+    echo 'nvm is not installed. Downloading...'
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fi
 
@@ -136,5 +113,12 @@ if [[ "$OS" == "darwin"* ]]; then
         apps+='firefox '
     fi
 
-    echo 'Apps to install:' $apps
+    if [[ -n $apps ]]; then
+        echo 'Apps to install:' $apps
+        brew install $apps
+    else
+        echo 'All apps already installed'
+    fi
+
+    bash install-colour-profiles.sh
 fi
