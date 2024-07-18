@@ -12,6 +12,7 @@ fi
 echo '-----------------------------'
 echo 'Copying ICC profiles to ~/Library/ColorSync/Profiles'
 
+mkdir -p ~/Library/ColorSync/Profiles
 cp -r ${dir}/colour-profiles/* ~/Library/ColorSync/Profiles
 
 echo 'ICC profiles installed'
