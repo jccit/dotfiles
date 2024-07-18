@@ -21,7 +21,14 @@ if command -v zsh >/dev/null 2>&1; then
     echo 'ZSH already installed'
 else
     echo 'Installing ZSH...'
-    brew install git zsh
+    brew install zsh
+fi
+
+if command -v oh-my-posh >/dev/null 2>&1; then
+    echo 'oh-my-posh already installed'
+else
+    echo 'Installing terminal utils...'
+    brew install oh-my-posh atuin lsd 
 fi
 
 echo ''
