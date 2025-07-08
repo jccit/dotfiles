@@ -7,12 +7,16 @@ echo ''
 
 apps=''
 
-if [[ ! -d /Applications/Visual\ Studio\ Code.app ]]; then
-    apps+='visual-studio-code '
+if [[ ! -d /Applications/Stats.app ]]; then
+    apps+='stats '
 fi
 
-if [[ ! -d /Applications/Firefox.app ]]; then
-    apps+='firefox '
+if [[ ! -d /Applications/Obsidian.app ]]; then
+    apps+='obsidian '
+fi
+
+if [[ ! -d /Applications/Ghostty.app ]]; then
+    apps+='ghostty '
 fi
 
 if [[ -n $apps ]]; then
